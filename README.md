@@ -6,27 +6,28 @@ Website mockups for **Il Nonno**, a boutique 20-seat Italian restaurant in Astor
 
 ## Mockups
 
-Two design directions are in progress, each on its own branch:
+Three design directions, each on its own branch and Vercel preview URL:
 
-| Branch | Style | Description |
-|--------|-------|-------------|
-| `main` | Dark / Moody | Near-black background, gold accents, Playfair Display serif. Intimate and candlelit. |
-| `mockup-light` | Light / Editorial | Warm off-white, burgundy accents, Cormorant Garamond + script logo. Airy and magazine-like. |
-
-Each branch deploys automatically to a Vercel preview URL on push.
+| Branch | Style | Vibe |
+|--------|-------|------|
+| `main` | Dark / Moody | Near-black background, gold accents, Playfair Display serif. Intimate and candlelit. Inspired by Gramercy Tavern. |
+| `mockup-light` | Light / Editorial | Warm off-white, burgundy accents, Cormorant Garamond + script logo. Airy and magazine-like. Inspired by Prossimo. |
+| `mockup-bold` | Bold / Graphic | Warm parchment, tomato-red accents, Syne display font. Big type, asymmetric grids, scrolling marquee. Inspired by Roberta's Pizza. |
 
 ---
 
 ## Pages
 
-| Route | Page |
-|-------|------|
-| `/` | Home — hero, story, menu teaser, catering CTA |
-| `/about` | Our Story — brand narrative, values |
-| `/menu` | Seasonal menu — antipasti, pasta, secondi, dolci |
-| `/order` | Online ordering — 3-step cart, pickup only, no third party |
-| `/catering` | Private events — quote request form |
-| `/contact` | Reservations — date, time, party size form |
+All three mockups include the same 6 pages:
+
+| Route | Page | What's there |
+|-------|------|-------------|
+| `/` | Home | Hero, brand story, menu teaser, photo grid, catering CTA, reservation banner |
+| `/about` | Our Story | Brand narrative, photography, values |
+| `/menu` | Menu | Full seasonal menu — antipasti, pasta, secondi, dolci |
+| `/order` | Online Ordering | 3-step cart flow, pickup only, no third-party fees |
+| `/catering` | Catering & Events | Quote request form with event type, guest count, date |
+| `/contact` | Reservations | Reservation form — date, time, party size, special requests |
 
 ---
 
@@ -34,9 +35,12 @@ Each branch deploys automatically to a Vercel preview URL on push.
 
 - **Framework:** Next.js 16 (App Router)
 - **Styling:** Tailwind CSS
-- **Fonts:** Google Fonts (Playfair Display / Cormorant Garamond / Great Vibes / Inter)
+- **Fonts:**
+  - `main` — Playfair Display + Inter
+  - `mockup-light` — Cormorant Garamond + Great Vibes (script) + Inter
+  - `mockup-bold` — Syne + DM Sans
 - **Images:** Unsplash placeholders — to be replaced with real photography
-- **Deployment:** Vercel
+- **Deployment:** Vercel (auto-deploys each branch as a preview URL)
 
 ---
 
@@ -49,16 +53,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
----
-
-## Switching Between Mockups
+To preview a specific mockup locally:
 
 ```bash
-# Dark/moody version
-git checkout main
-
-# Light/editorial version
-git checkout mockup-light
+git checkout main          # dark/moody
+git checkout mockup-light  # light/editorial
+git checkout mockup-bold   # bold/graphic
+npm run dev
 ```
 
 ---
@@ -68,7 +69,8 @@ git checkout mockup-light
 - [ ] Unsplash placeholder images → real restaurant photography
 - [ ] Phone number, email, and address → actual contact info
 - [ ] Menu items and prices → confirmed menu
-- [ ] Reservation form → connect to backend or booking system (e.g. Resy, OpenTable, or custom)
+- [ ] Hours → confirmed operating hours
+- [ ] Reservation form → connect to booking system or backend
 - [ ] Order form → connect to backend for real order handling
 - [ ] Catering form → connect to email or CRM
 - [ ] Logo → upload actual Il Nonno logo asset
