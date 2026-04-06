@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Marquee from "@/components/Marquee";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -48,56 +49,59 @@ export default function Menu() {
   return (
     <>
       {/* HEADER */}
-      <section className="pt-32 pb-16 px-6 text-center max-w-3xl mx-auto">
-        <p className="text-xs tracking-[0.4em] uppercase text-gold mb-4">Seasonal Menu</p>
-        <h1 className="font-serif text-5xl md:text-6xl text-cream mb-6">The Menu</h1>
-        <p className="text-cream-muted leading-relaxed">
-          Our menu changes with the seasons. Below is our current selection. Dietary needs and allergies? Just ask — we&rsquo;ll take care of you.
-        </p>
+      <section className="pt-14 md:pt-16 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+          <p className="font-display text-xs font-600 tracking-[0.3em] uppercase text-red mb-4">Seasonal Selection</p>
+          <h1 className="font-display font-800 text-[12vw] md:text-[8vw] uppercase leading-[0.9] tracking-tight text-ink">
+            The Menu
+          </h1>
+        </div>
       </section>
 
-      {/* MENU SECTIONS */}
-      <section className="pb-24 px-6 max-w-4xl mx-auto space-y-16">
+      <Marquee />
+
+      {/* NOTE */}
+      <div className="max-w-4xl mx-auto px-6 pt-12 pb-4">
+        <p className="text-ink-muted text-sm">
+          Our menu changes with the seasons. Dietary needs? Just ask — we&rsquo;ll take care of you.
+        </p>
+      </div>
+
+      {/* MENU */}
+      <section className="max-w-4xl mx-auto px-6 pb-24 space-y-16">
         {sections.map((section) => (
           <div key={section.title}>
             <div className="flex items-center gap-4 mb-8">
-              <div className="flex-1 h-px bg-border" />
-              <h2 className="font-serif text-2xl text-cream tracking-wide">{section.title}</h2>
-              <div className="flex-1 h-px bg-border" />
+              <h2 className="font-display font-800 text-2xl uppercase tracking-tight text-ink">{section.title}</h2>
+              <div className="flex-1 h-0.5 bg-red/20" />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-0 border-t border-border">
               {section.items.map((item) => (
-                <div key={item.name} className="flex items-start justify-between gap-6 group">
-                  <div className="flex-1">
-                    <p className="text-cream font-medium mb-1">{item.name}</p>
-                    <p className="text-sm text-cream-muted leading-relaxed">{item.desc}</p>
+                <div key={item.name} className="flex items-start justify-between gap-8 py-5 border-b border-border">
+                  <div>
+                    <p className="font-display font-700 text-base uppercase text-ink mb-1">{item.name}</p>
+                    <p className="text-sm text-ink-muted leading-relaxed">{item.desc}</p>
                   </div>
-                  <p className="text-gold font-serif text-lg flex-shrink-0">${item.price}</p>
+                  <p className="font-display font-700 text-lg text-red flex-shrink-0">${item.price}</p>
                 </div>
               ))}
             </div>
           </div>
         ))}
 
-        <p className="text-center text-xs text-cream-muted tracking-wide pt-4 border-t border-border">
-          Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness. Menu is subject to change based on availability.
+        <p className="text-xs text-ink-muted tracking-wide">
+          Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness. Menu subject to change.
         </p>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-surface border-t border-border text-center px-6">
-        <p className="font-serif text-3xl text-cream mb-6">Ready to dine?</p>
+      <section className="bg-ink py-16 text-center px-6">
+        <p className="font-display font-800 text-4xl uppercase text-paper mb-8">Ready to dine?</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/contact"
-            className="text-sm tracking-widest uppercase bg-gold text-ink px-8 py-4 hover:bg-gold-dark transition-colors"
-          >
+          <Link href="/contact" className="font-display font-700 text-xs tracking-widest uppercase bg-red text-paper px-10 py-4 hover:bg-red-dark transition-colors">
             Reserve a Table
           </Link>
-          <Link
-            href="/order"
-            className="text-sm tracking-widest uppercase border border-gold text-gold px-8 py-4 hover:bg-gold hover:text-ink transition-colors"
-          >
+          <Link href="/order" className="font-display font-700 text-xs tracking-widest uppercase border-2 border-paper text-paper px-10 py-4 hover:bg-paper hover:text-ink transition-colors">
             Order for Pickup
           </Link>
         </div>

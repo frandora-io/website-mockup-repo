@@ -5,18 +5,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0f0e0c",
-        surface: "#1c1a17",
-        "surface-2": "#252219",
-        cream: "#f2ede4",
-        "cream-muted": "#a89880",
-        gold: "#c9a458",
-        "gold-dark": "#a07c38",
-        border: "#2e2b26",
+        paper: "#faf7f2",
+        "paper-dark": "#f0ead8",
+        ink: "#0d0c0a",
+        "ink-soft": "#3d3a35",
+        "ink-muted": "#8a8278",
+        red: "#d63c2f",
+        "red-dark": "#b32a1e",
+        border: "#ddd5c4",
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-syne)", "system-ui", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 20s linear infinite",
       },
     },
   },

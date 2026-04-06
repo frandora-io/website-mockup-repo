@@ -8,18 +8,23 @@
   }
 
   body {
-    background-color: #0f0e0c;
-    color: #f2ede4;
+    background-color: #faf7f2;
+    color: #0d0c0a;
   }
 
   ::selection {
-    background-color: #c9a458;
-    color: #0f0e0c;
+    background-color: #d63c2f;
+    color: #faf7f2;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Pause marquee on hover */
+  .marquee-track:hover {
+    animation-play-state: paused;
   }
 }
