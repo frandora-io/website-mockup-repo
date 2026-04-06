@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "Our Story" },
   { href: "/menu", label: "Menu" },
   { href: "/order", label: "Order Online" },
   { href: "/catering", label: "Catering" },
-  { href: "/contact", label: "Reservations" },
 ];
 
 export default function Nav() {
@@ -24,42 +22,35 @@ export default function Nav() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || open ? "bg-ink/95 backdrop-blur-sm border-b border-border" : "bg-transparent"
+        scrolled || open
+          ? "bg-canvas/95 backdrop-blur-sm border-b border-border shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link
-          href="/"
-          className="font-serif text-xl md:text-2xl tracking-widest text-cream uppercase"
-        >
+        <Link href="/" className="font-script text-3xl md:text-4xl text-ink leading-none">
           Il Nonno
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {links.slice(1, -1).map((l) => (
+        {/* Desktop nav — centered */}
+        <nav className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+          {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm tracking-widest uppercase text-cream-muted hover:text-cream transition-colors"
+              className="text-xs tracking-[0.2em] uppercase text-ink-muted hover:text-ink transition-colors"
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA */}
+        {/* Right CTA */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            href="/order"
-            className="text-sm tracking-widest uppercase border border-gold text-gold px-4 py-2 hover:bg-gold hover:text-ink transition-colors"
-          >
-            Order Online
-          </Link>
-          <Link
             href="/contact"
-            className="text-sm tracking-widest uppercase bg-gold text-ink px-4 py-2 hover:bg-gold-dark transition-colors"
+            className="text-xs tracking-[0.2em] uppercase bg-ink text-canvas px-5 py-2.5 hover:bg-wine transition-colors"
           >
             Reserve
           </Link>
@@ -71,21 +62,21 @@ export default function Nav() {
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-6 h-px bg-cream transition-transform duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-px bg-cream transition-opacity duration-300 ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px bg-cream transition-transform duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`block w-6 h-px bg-ink transition-transform duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-px bg-ink transition-opacity duration-300 ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-px bg-ink transition-transform duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <nav className="md:hidden bg-ink border-t border-border px-6 pb-6 flex flex-col gap-4">
-          {links.map((l) => (
+        <nav className="md:hidden bg-canvas border-t border-border px-6 pb-6 flex flex-col gap-1">
+          {[...links, { href: "/contact", label: "Reservations" }].map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-sm tracking-widest uppercase text-cream-muted hover:text-cream transition-colors py-2 border-b border-border"
+              className="text-xs tracking-[0.2em] uppercase text-ink-muted hover:text-ink transition-colors py-3 border-b border-border"
             >
               {l.label}
             </Link>
@@ -93,7 +84,7 @@ export default function Nav() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 text-center text-sm tracking-widest uppercase bg-gold text-ink px-4 py-3 hover:bg-gold-dark transition-colors"
+            className="mt-3 text-center text-xs tracking-[0.2em] uppercase bg-ink text-canvas px-4 py-3 hover:bg-wine transition-colors"
           >
             Reserve a Table
           </Link>

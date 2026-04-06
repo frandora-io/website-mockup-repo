@@ -5,17 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0f0e0c",
-        surface: "#1c1a17",
-        "surface-2": "#252219",
-        cream: "#f2ede4",
-        "cream-muted": "#a89880",
-        gold: "#c9a458",
-        "gold-dark": "#a07c38",
-        border: "#2e2b26",
+        canvas: "#faf8f5",
+        surface: "#f2ede6",
+        "surface-2": "#e8e2d9",
+        ink: "#1a1714",
+        "ink-muted": "#6b6058",
+        "ink-light": "#a09488",
+        wine: "#7c2d3e",
+        "wine-dark": "#5e1f2c",
+        border: "#ddd8d0",
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        script: ["var(--font-script)", "cursive"],
+        serif: ["var(--font-cormorant)", "Georgia", "serif"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
     },

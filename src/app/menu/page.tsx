@@ -48,56 +48,53 @@ export default function Menu() {
   return (
     <>
       {/* HEADER */}
-      <section className="pt-32 pb-16 px-6 text-center max-w-3xl mx-auto">
-        <p className="text-xs tracking-[0.4em] uppercase text-gold mb-4">Seasonal Menu</p>
-        <h1 className="font-serif text-5xl md:text-6xl text-cream mb-6">The Menu</h1>
-        <p className="text-cream-muted leading-relaxed">
-          Our menu changes with the seasons. Below is our current selection. Dietary needs and allergies? Just ask — we&rsquo;ll take care of you.
+      <section className="pt-36 pb-16 px-6 text-center max-w-3xl mx-auto">
+        <p className="text-xs tracking-[0.4em] uppercase text-wine mb-4">Seasonal Selection</p>
+        <h1 className="font-script text-7xl md:text-9xl text-ink leading-none mb-6">The Menu</h1>
+        <div className="w-12 h-px bg-ink mx-auto mb-8" />
+        <p className="text-ink-muted text-[15px] leading-relaxed">
+          Our menu changes with the seasons. Dietary needs and allergies? Just ask — we&rsquo;ll take care of you.
         </p>
       </section>
 
       {/* MENU SECTIONS */}
-      <section className="pb-24 px-6 max-w-4xl mx-auto space-y-16">
+      <section className="pb-24 max-w-3xl mx-auto px-6 space-y-20">
         {sections.map((section) => (
           <div key={section.title}>
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-6 mb-10">
               <div className="flex-1 h-px bg-border" />
-              <h2 className="font-serif text-2xl text-cream tracking-wide">{section.title}</h2>
+              <h2 className="font-serif text-2xl font-light text-ink tracking-widest uppercase text-sm">
+                {section.title}
+              </h2>
               <div className="flex-1 h-px bg-border" />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-7">
               {section.items.map((item) => (
-                <div key={item.name} className="flex items-start justify-between gap-6 group">
-                  <div className="flex-1">
-                    <p className="text-cream font-medium mb-1">{item.name}</p>
-                    <p className="text-sm text-cream-muted leading-relaxed">{item.desc}</p>
+                <div key={item.name} className="flex items-start justify-between gap-8">
+                  <div>
+                    <p className="font-serif text-xl text-ink font-light mb-1">{item.name}</p>
+                    <p className="text-sm text-ink-muted leading-relaxed">{item.desc}</p>
                   </div>
-                  <p className="text-gold font-serif text-lg flex-shrink-0">${item.price}</p>
+                  <p className="text-wine font-serif text-lg flex-shrink-0">${item.price}</p>
                 </div>
               ))}
             </div>
           </div>
         ))}
 
-        <p className="text-center text-xs text-cream-muted tracking-wide pt-4 border-t border-border">
-          Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness. Menu is subject to change based on availability.
+        <p className="text-center text-xs text-ink-light tracking-wide pt-4 border-t border-border">
+          Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness. Menu subject to change.
         </p>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-surface border-t border-border text-center px-6">
-        <p className="font-serif text-3xl text-cream mb-6">Ready to dine?</p>
+      <section className="bg-surface border-t border-border py-16 text-center px-6">
+        <p className="font-serif text-3xl font-light text-ink mb-8">Ready to dine?</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/contact"
-            className="text-sm tracking-widest uppercase bg-gold text-ink px-8 py-4 hover:bg-gold-dark transition-colors"
-          >
+          <Link href="/contact" className="text-xs tracking-[0.2em] uppercase bg-ink text-canvas px-10 py-4 hover:bg-wine transition-colors">
             Reserve a Table
           </Link>
-          <Link
-            href="/order"
-            className="text-sm tracking-widest uppercase border border-gold text-gold px-8 py-4 hover:bg-gold hover:text-ink transition-colors"
-          >
+          <Link href="/order" className="text-xs tracking-[0.2em] uppercase border border-ink text-ink px-10 py-4 hover:bg-ink hover:text-canvas transition-colors">
             Order for Pickup
           </Link>
         </div>
