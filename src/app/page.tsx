@@ -189,6 +189,69 @@ export default function Home() {
           Reserve Your Table
         </Link>
       </section>
+
+      {/* GOOGLE REVIEWS */}
+      {/* TODO: Replace placeholder cards with live Google Places embed or widget before launch */}
+      <section
+        aria-label="Customer Reviews"
+        className="py-24 px-6 bg-surface border-t border-border"
+      >
+        <div className="max-w-7xl mx-auto">
+          <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4 text-center">
+            What Our Guests Say
+          </p>
+          <h2 className="font-serif text-4xl md:text-5xl text-cream mb-12 text-center">
+            Loved by New York
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                name: "Maria T.",
+                quote:
+                  "Best pasta I've had outside of Rome. Intimate, warm, and totally unpretentious.",
+              },
+              {
+                name: "James R.",
+                quote:
+                  "Hidden gem in Astoria. The cacio e pepe alone is worth the trip from anywhere in the city.",
+              },
+              {
+                name: "Sofia L.",
+                quote:
+                  "We've been coming every month since we found this place. The staff remembers your name.",
+              },
+              {
+                name: "David K.",
+                quote:
+                  "Catered our anniversary dinner. Flawless experience from start to finish.",
+              },
+            ].map((review) => (
+              <div
+                key={review.name}
+                className="bg-ink border border-border p-6 flex flex-col gap-4"
+              >
+                <p className="text-gold tracking-widest">★★★★★</p>
+                <p className="text-cream-muted text-sm leading-relaxed italic flex-1">
+                  &ldquo;{review.quote}&rdquo;
+                </p>
+                <div>
+                  <p className="text-cream text-xs tracking-widest uppercase mb-1">
+                    {review.name}
+                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <span className="bg-[#4285F4] text-white text-[9px] font-bold w-3.5 h-3.5 flex items-center justify-center rounded-sm">
+                      G
+                    </span>
+                    <span className="text-cream-muted text-xs tracking-wide">
+                      Google Review
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
