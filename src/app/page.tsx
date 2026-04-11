@@ -1,9 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import PopupCTA from "@/components/PopupCTA";
 
 export default function Home() {
   return (
     <>
+      <PopupCTA />
+
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background image */}
