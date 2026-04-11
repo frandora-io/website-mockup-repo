@@ -1,18 +1,31 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+
+const DISMISSED_KEY = "popup-dismissed";
 
 export default function PopupCTA() {
   const [isOpen, setIsOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!sessionStorage.getItem("popup-dismissed")) {
+    if (!sessionStorage.getItem(DISMISSED_KEY)) {
       setIsOpen(true);
     }
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    closeButtonRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") dismiss();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
   const dismiss = () => {
-    sessionStorage.setItem("popup-dismissed", "1");
+    sessionStorage.setItem(DISMISSED_KEY, "1");
     setIsOpen(false);
   };
 
@@ -24,10 +37,14 @@ export default function PopupCTA() {
       onClick={dismiss}
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popup-heading"
         className="relative bg-surface border border-border max-w-md w-[90%] p-10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
+          ref={closeButtonRef}
           onClick={dismiss}
           className="absolute top-4 right-5 text-cream-muted hover:text-cream transition-colors text-lg leading-none"
           aria-label="Close"
@@ -37,7 +54,10 @@ export default function PopupCTA() {
         <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">
           Now Delivering
         </p>
-        <h2 className="font-serif text-2xl text-cream mb-4 leading-snug">
+        <h2
+          id="popup-heading"
+          className="font-serif text-2xl text-cream mb-4 leading-snug"
+        >
           We Cater to All of New York City
         </h2>
         <p className="text-cream-muted text-sm leading-relaxed mb-6">
