@@ -37,12 +37,12 @@ export default function Nav() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-3">
           {links.slice(1, -1).map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm tracking-widest uppercase text-cream-muted hover:text-cream transition-colors"
+              className="text-sm tracking-widest uppercase border border-transparent text-cream-muted px-4 py-2 hover:border-gold hover:text-gold transition-colors"
             >
               {l.label}
             </Link>
