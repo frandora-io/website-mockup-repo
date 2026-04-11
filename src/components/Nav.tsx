@@ -107,11 +107,11 @@ export default function Nav() {
         </div>
 
         {/* Mobile right-side actions */}
-        <div className="md:hidden flex items-center gap-1">
+        <div className="md:hidden flex items-center gap-2">
           <Link
             href="/location"
             aria-label="Visit us"
-            className="p-2 text-gold hover:bg-gold hover:text-ink transition-colors"
+            className="p-3 min-w-11 min-h-11 flex items-center justify-center text-gold hover:bg-gold hover:text-ink transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@ export default function Nav() {
           <a
             href="tel:+17181234567"
             aria-label="Call us"
-            className="p-2 text-gold hover:bg-gold hover:text-ink transition-colors"
+            className="p-3 min-w-11 min-h-11 flex items-center justify-center text-gold hover:bg-gold hover:text-ink transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +148,7 @@ export default function Nav() {
             </svg>
           </a>
           <button
-            className="flex flex-col gap-1.5 p-2"
+            className="flex flex-col gap-1.5 p-3 min-w-11 min-h-11 items-center justify-center"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >

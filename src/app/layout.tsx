@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MobileActionBar from "@/components/MobileActionBar";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -90,10 +91,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
         />
       </head>
-      <body className="bg-ink text-cream font-sans antialiased">
+      <body className="bg-ink text-cream font-sans antialiased pb-[76px] md:pb-0">
         <Nav />
         <main>{children}</main>
         <Footer />
+        <MobileActionBar />
       </body>
     </html>
   );

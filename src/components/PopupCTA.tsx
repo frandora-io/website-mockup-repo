@@ -2,16 +2,39 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
-const DISMISSED_KEY = "popup-dismissed";
+// Use localStorage so we don't nag the same visitor on every session.
+const DISMISSED_KEY = "popup-dismissed-v2";
+// Require some scroll depth AND a short delay before showing. Prevents the
+// modal from hijacking the first impression on mobile.
+const SCROLL_TRIGGER_PX = 600;
+const DELAY_MS = 8000;
 
 export default function PopupCTA() {
   const [isOpen, setIsOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const firedRef = useRef(false);
 
   useEffect(() => {
-    if (!sessionStorage.getItem(DISMISSED_KEY)) {
+    if (typeof window === "undefined") return;
+    if (localStorage.getItem(DISMISSED_KEY)) return;
+
+    const maybeFire = () => {
+      if (firedRef.current) return;
+      firedRef.current = true;
       setIsOpen(true);
-    }
+    };
+
+    const onScroll = () => {
+      if (window.scrollY >= SCROLL_TRIGGER_PX) maybeFire();
+    };
+
+    const timer = window.setTimeout(maybeFire, DELAY_MS);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -25,7 +48,11 @@ export default function PopupCTA() {
   }, [isOpen]);
 
   const dismiss = () => {
-    sessionStorage.setItem(DISMISSED_KEY, "1");
+    try {
+      localStorage.setItem(DISMISSED_KEY, "1");
+    } catch {
+      // ignore quota / private mode errors
+    }
     setIsOpen(false);
   };
 
@@ -33,25 +60,25 @@ export default function PopupCTA() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 backdrop-blur-sm p-4"
       onClick={dismiss}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="popup-heading"
-        className="relative bg-surface border border-border max-w-md w-[90%] p-10"
+        className="relative bg-surface border border-border max-w-md w-full p-8 md:p-10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           ref={closeButtonRef}
           onClick={dismiss}
-          className="absolute top-4 right-5 text-cream-muted hover:text-cream transition-colors text-lg leading-none"
+          className="absolute top-3 right-4 text-cream-muted hover:text-cream transition-colors text-2xl leading-none w-11 h-11 flex items-center justify-center"
           aria-label="Close"
         >
           ✕
         </button>
-        <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">
+        <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3 mt-6 md:mt-0">
           Now Delivering
         </p>
         <h2
