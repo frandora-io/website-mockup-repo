@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Visit Us | Il Nonno NYC",
@@ -12,173 +10,166 @@ const ADDRESS_LINE_1 = "31-14 Broadway";
 const ADDRESS_LINE_2 = "Astoria, NY 11106";
 const PHONE_DISPLAY = "(718) 123-4567";
 const PHONE_TEL = "+17181234567";
-const MAPS_QUERY = encodeURIComponent(
-  `${ADDRESS_LINE_1}, ${ADDRESS_LINE_2}`
-);
+const RESERVATIONS_DISPLAY = "(718) 123-4568";
+const RESERVATIONS_TEL = "+17181234568";
+const EMAIL = "hello@ilnonnonyc.com";
+
+const MAPS_QUERY = encodeURIComponent(`${ADDRESS_LINE_1}, ${ADDRESS_LINE_2}`);
 const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`;
 const MAP_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 
 export default function LocationPage() {
   return (
     <>
-      {/* ───────── FIRST FOLD — BOLD ───────── */}
+      {/* ───────── VISIT US ───────── */}
       <section
         aria-label="Visit Il Nonno"
-        className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 md:pt-0 md:pb-0"
+        className="pt-28 md:pt-36 pb-16 md:pb-24 px-6 md:px-10"
       >
-        {/* Background image */}
-        <Image
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1800&q=80"
-          alt="Il Nonno storefront on Broadway, Astoria"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-ink/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
-
-        {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
-          <div className="max-w-2xl">
-            <p className="text-xs tracking-[0.4em] uppercase text-gold mb-6">
-              Astoria, Queens
-            </p>
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-8xl text-cream leading-[0.95] mb-8">
-              Visit <span className="italic text-gold">Il Nonno</span>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          {/* Left column — copy */}
+          <div>
+            <h1 className="font-serif text-6xl md:text-8xl text-gold leading-[0.95] mb-10">
+              Visit Us
             </h1>
-            <p className="text-lg md:text-2xl text-cream/85 font-light leading-relaxed mb-10 text-balance">
-              A 20-seat table tucked between the N/W tracks and the East River.
-              Come hungry. Leave a little louder than you arrived.
-            </p>
 
-            {/* Address card */}
-            <div className="border border-gold/40 bg-ink/60 backdrop-blur-sm p-6 md:p-8 mb-8">
-              <p className="text-xs tracking-widest uppercase text-gold mb-3">
-                Find Us
+            <div className="space-y-5 text-cream-muted leading-relaxed text-base md:text-lg max-w-xl">
+              <p>
+                Tucked into a quiet corner of Astoria, just a few blocks from
+                the N/W tracks and a short walk from the East River waterfront,
+                Il Nonno sits inside a century-old brick storefront we&rsquo;ve
+                lovingly restored into a candlelit 20-seat dining room.
               </p>
-              <address className="not-italic font-serif text-2xl md:text-3xl text-cream leading-snug mb-4">
+              <p>
+                We&rsquo;re a short ride from Midtown — 12 minutes on the N
+                express — and worlds away from the noise of it. Come early for
+                a glass of something cold at the bar, or linger late over
+                espresso and amaro.
+              </p>
+            </div>
+
+            {/* Address / contact table */}
+            <dl className="mt-12 grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-12 gap-y-4 text-sm md:text-base max-w-xl">
+              <dt className="text-xs md:text-sm tracking-widest uppercase text-cream-muted/70 pt-0.5">
+                Address
+              </dt>
+              <dd className="not-italic text-cream leading-snug">
                 {ADDRESS_LINE_1}
                 <br />
                 {ADDRESS_LINE_2}
-              </address>
-              <p className="text-cream-muted">
+              </dd>
+
+              <dt className="text-xs md:text-sm tracking-widest uppercase text-cream-muted/70 pt-0.5">
+                Telephone
+              </dt>
+              <dd>
                 <a
                   href={`tel:${PHONE_TEL}`}
-                  className="hover:text-gold transition-colors"
+                  className="text-cream hover:text-gold transition-colors"
                 >
                   {PHONE_DISPLAY}
                 </a>
-              </p>
-            </div>
+              </dd>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <a
-                href={DIRECTIONS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center text-sm tracking-widest uppercase bg-gold text-ink px-8 py-4 hover:bg-gold-dark transition-colors"
-              >
-                Get Directions
-              </a>
-              <Link
-                href="/contact"
-                className="text-center text-sm tracking-widest uppercase border border-cream text-cream px-8 py-4 hover:bg-cream hover:text-ink transition-colors"
-              >
-                Reserve a Table
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+              <dt className="text-xs md:text-sm tracking-widest uppercase text-cream-muted/70 pt-0.5">
+                Reservations
+              </dt>
+              <dd>
+                <a
+                  href={`tel:${RESERVATIONS_TEL}`}
+                  className="text-cream hover:text-gold transition-colors"
+                >
+                  {RESERVATIONS_DISPLAY}
+                </a>
+              </dd>
 
-      {/* ───────── SECOND FOLD — DETAILS + MAP ───────── */}
-      <section
-        aria-label="Location Details"
-        className="py-20 md:py-28 px-6 md:px-10 max-w-7xl mx-auto"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 md:gap-14">
-          {/* Info column */}
-          <div className="lg:col-span-2 space-y-10">
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">
-                Hours
-              </p>
-              <ul className="text-cream-muted space-y-1.5 text-sm md:text-base">
-                <li className="flex justify-between border-b border-border/60 pb-1.5">
-                  <span>Wednesday — Thursday</span>
-                  <span className="text-cream">5 – 10 PM</span>
-                </li>
-                <li className="flex justify-between border-b border-border/60 pb-1.5">
-                  <span>Friday — Saturday</span>
-                  <span className="text-cream">5 – 11 PM</span>
-                </li>
-                <li className="flex justify-between border-b border-border/60 pb-1.5">
-                  <span>Sunday</span>
-                  <span className="text-cream">4 – 9 PM</span>
-                </li>
-                <li className="flex justify-between pt-1.5">
-                  <span>Monday — Tuesday</span>
-                  <span className="text-cream-muted/60">Closed</span>
-                </li>
-              </ul>
-            </div>
+              <dt className="text-xs md:text-sm tracking-widest uppercase text-cream-muted/70 pt-0.5">
+                Email
+              </dt>
+              <dd>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-cream hover:text-gold transition-colors break-all"
+                >
+                  {EMAIL}
+                </a>
+              </dd>
+            </dl>
 
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">
-                Subway
-              </p>
-              <p className="text-cream-muted leading-relaxed text-sm md:text-base">
-                <span className="text-cream font-medium">N / W</span> to
-                Broadway — 2-minute walk.
-                <br />
-                <span className="text-cream font-medium">R / M</span> to
-                Steinway St — 8-minute walk.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">
-                Parking
-              </p>
-              <p className="text-cream-muted leading-relaxed text-sm md:text-base">
-                Free street parking is usually available on side streets.
-                Paid lots on 31st St and 34th Ave within a short walk.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-gold mb-3">
-                Accessibility
-              </p>
-              <p className="text-cream-muted leading-relaxed text-sm md:text-base">
-                Our dining room is on the ground floor and wheelchair
-                accessible. Please let us know about any accommodations when
-                you reserve.
-              </p>
-            </div>
-          </div>
-
-          {/* Map column */}
-          <div className="lg:col-span-3">
-            <div className="relative w-full aspect-[4/3] md:aspect-[16/10] border border-border overflow-hidden">
-              <iframe
-                title="Map to Il Nonno NYC"
-                src={MAP_EMBED_URL}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full grayscale contrast-110"
-                allowFullScreen
-              />
-            </div>
             <a
               href={DIRECTIONS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-xs tracking-widest uppercase text-gold border-b border-gold pb-0.5 hover:text-cream hover:border-cream transition-colors"
+              className="mt-12 inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.3em] uppercase text-gold hover:text-cream transition-colors"
             >
-              Open in Google Maps →
+              Open in Maps
+              <span aria-hidden="true" className="text-lg">→</span>
             </a>
+          </div>
+
+          {/* Right column — map */}
+          <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-[720px] border border-border overflow-hidden">
+            <iframe
+              title="Map to Il Nonno NYC"
+              src={MAP_EMBED_URL}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full grayscale contrast-110"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── PRACTICAL INFO ───────── */}
+      <section
+        aria-label="Practical information"
+        className="pb-24 md:pb-32 px-6 md:px-10"
+      >
+        <div className="max-w-7xl mx-auto border-t border-border pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+          <div>
+            <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
+              Hours
+            </p>
+            <ul className="text-cream-muted text-sm space-y-1.5">
+              <li>Wed — Thu · 5 – 10 PM</li>
+              <li>Fri — Sat · 5 – 11 PM</li>
+              <li>Sun · 4 – 9 PM</li>
+              <li className="text-cream-muted/60">Closed Mon — Tue</li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
+              Subway
+            </p>
+            <p className="text-cream-muted text-sm leading-relaxed">
+              <span className="text-cream font-medium">N / W</span> to Broadway
+              — 2-minute walk.
+              <br />
+              <span className="text-cream font-medium">R / M</span> to Steinway
+              St — 8-minute walk.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
+              Parking
+            </p>
+            <p className="text-cream-muted text-sm leading-relaxed">
+              Free street parking on side streets. Paid lots on 31st St and
+              34th Ave within a short walk.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4">
+              Accessibility
+            </p>
+            <p className="text-cream-muted text-sm leading-relaxed">
+              Ground-floor dining room, wheelchair accessible. Let us know
+              about any accommodations when you reserve.
+            </p>
           </div>
         </div>
       </section>
