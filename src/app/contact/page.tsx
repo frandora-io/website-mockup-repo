@@ -1,15 +1,26 @@
 "use client";
 import { useState, FormEvent } from "react";
+import { submitReservation } from "./actions";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "", email: "", phone: "", date: "", time: "", guests: "", notes: "",
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+    const result = await submitReservation(form);
+    setSubmitting(false);
+    if (result.ok) {
+      setSubmitted(true);
+    } else {
+      setError(result.error);
+    }
   };
 
   return (
@@ -166,11 +177,17 @@ export default function Contact() {
                   />
                 </div>
 
+                {error && (
+                  <p className="text-sm text-red-400 bg-red-950/30 border border-red-900/40 px-4 py-3">
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full text-sm tracking-widest uppercase bg-gold text-ink py-4 hover:bg-gold-dark transition-colors"
+                  disabled={submitting}
+                  className="w-full text-sm tracking-widest uppercase bg-gold text-ink py-4 hover:bg-gold-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Request Reservation
+                  {submitting ? "Sending…" : "Request Reservation"}
                 </button>
                 <p className="text-xs text-cream-muted text-center">
                   Reservations are confirmed via text within a few hours. For same-day requests, call us directly.
