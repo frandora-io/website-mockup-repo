@@ -9,7 +9,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background image */}
+        {/* Fallback image — shown if video cannot autoplay */}
         <Image
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=80"
           alt="Il Nonno dining room"
@@ -17,6 +17,21 @@ export default function Home() {
           priority
           className="object-cover object-center"
         />
+        {/* Hero video — replace src with real footage before launch */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        >
+          {/* TODO: Replace with real video URL before launch */}
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-people-eating-in-a-restaurant-4226-large.mp4"
+            type="video/mp4"
+          />
+        </video>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-ink/65" />
 
