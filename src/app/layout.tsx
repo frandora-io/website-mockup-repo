@@ -44,8 +44,53 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const restaurantSchema = {
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "LocalBusiness"],
+    name: "Il Nonno NYC",
+    description:
+      "An intimate 20-seat Italian restaurant in Astoria, NY. Elevated but never pretentious — rooted in family, legacy, and the art of a proper meal.",
+    url: "https://www.ilnonnonyc.com",
+    telephone: "+17181234567",
+    email: "hello@ilnonnonyc.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Astoria",
+      addressRegion: "NY",
+      addressCountry: "US",
+    },
+    servesCuisine: "Italian",
+    priceRange: "$$",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Wednesday", "Thursday"],
+        opens: "17:00",
+        closes: "22:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Friday", "Saturday"],
+        opens: "17:00",
+        closes: "23:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday"],
+        opens: "16:00",
+        closes: "21:00",
+      },
+    ],
+  };
+
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
+        />
+      </head>
       <body className="bg-ink text-cream font-sans antialiased">
         <TopBanner />
         <Nav />

@@ -8,7 +8,7 @@ export default function Home() {
       <PopupCTA />
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section aria-label="Hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Fallback image — shown if video cannot autoplay */}
         <Image
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=80"
@@ -69,7 +69,7 @@ export default function Home() {
       </section>
 
       {/* INTRO STRIP */}
-      <section className="bg-surface py-8 border-y border-border">
+      <section aria-label="Restaurant Highlights" className="bg-surface py-8 border-y border-border">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 text-center md:text-left">
           {[
             ["Intimate", "Only 20 seats"],
@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* STORY SECTION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section aria-label="Our Story" className="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div>
           <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4">Our Story</p>
           <h2 className="font-serif text-4xl md:text-5xl text-cream mb-6 leading-tight">
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* ATMOSPHERE GRID */}
-      <section className="py-4 px-6 max-w-7xl mx-auto">
+      <section aria-label="Atmosphere" className="py-4 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=70", alt: "Candlelit table" },
@@ -132,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* MENU TEASER */}
-      <section className="py-24 px-6 text-center max-w-3xl mx-auto">
+      <section aria-label="Menu Preview" className="py-24 px-6 text-center max-w-3xl mx-auto">
         <p className="text-xs tracking-[0.3em] uppercase text-gold mb-4">The Menu</p>
         <h2 className="font-serif text-4xl md:text-5xl text-cream mb-6">
           Italian, re-imagined
@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* CATERING CTA */}
-      <section className="relative py-28 overflow-hidden">
+      <section aria-label="Catering" className="relative py-28 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=1600&q=70"
           alt="Catering event"
@@ -175,7 +175,7 @@ export default function Home() {
       </section>
 
       {/* RESERVATION CTA */}
-      <section className="py-24 px-6 text-center max-w-2xl mx-auto">
+      <section aria-label="Reservations" className="py-24 px-6 text-center max-w-2xl mx-auto">
         <p className="font-serif text-4xl md:text-5xl text-cream mb-6">
           Ready for a night out?
         </p>
