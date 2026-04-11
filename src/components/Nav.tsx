@@ -42,7 +42,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm tracking-widest uppercase border border-transparent text-cream-muted px-4 py-2 hover:border-gold hover:text-gold transition-colors"
+              className="text-sm tracking-widest uppercase border border-transparent text-cream-muted px-4 py-2 hover:border-gold hover:bg-gold hover:text-ink transition-colors"
             >
               {l.label}
             </Link>
