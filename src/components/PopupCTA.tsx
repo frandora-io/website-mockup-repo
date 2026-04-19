@@ -61,7 +61,7 @@ export default function PopupCTA() {
           We Cater to All of New York City
         </h2>
         <p className="text-cream-muted text-sm leading-relaxed mb-6">
-          Order from our Chelsea location for delivery — we can deliver to
+          Order from our Astoria location for delivery — we can deliver to
           addresses within a 14-mile radius. No third-party fees.
         </p>
         <Link
