@@ -72,7 +72,7 @@ export default function Home() {
       <section aria-label="Restaurant Highlights" className="bg-surface py-8 border-y border-border">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 text-center md:text-left">
           {[
-            ["Intimate", "Only 20 seats"],
+            ["Intimate", "Only 25 seats"],
             ["Family-Rooted", "Est. Astoria, NY"],
             ["Seasonally Driven", "Non-traditional Italian"],
           ].map(([title, sub]) => (
